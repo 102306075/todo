@@ -1,14 +1,30 @@
-<h2>all article</h2>
-<%=form_tag articles_path,method:"get" do%>
-course name<%=text_field_tag :title%>
-teacher<%=text_field_tag :content%>
-time <%=text_field_tag :coursetime%>
-<%=submit_tag "search"%>
-<%end%>
+<h2>todo</h2>
 
-<%@articles.each do|article|%>
-	<%= link_to article.title, article_path(article)%>
+<%=form_tag articles_path,method:"get" do%>
+<%=hidden_field_tag :content ,0%>
+
+
+<%=submit_tag "todo"%>
+<% end %>
+
+<%=form_tag articles_path,method:"get" do%>
+<%=hidden_field_tag :content,1%>
+
+<%=submit_tag "done"%>
+<% end %>
+
+
+<% @articles.each do|article|%>
+
+	<%=  article.title %>
 	<%= link_to "edit article", edit_article_path(article)%>
 	<%= link_to "delete article", article_path(article),method:"delete"%>
+	
+	<%if article.content =="0"%>
+	<%= link_to "now:todo", todo_article_path(article)%>
+	<%else%>
+	<%= link_to "now:done", todo_article_path(article)%>
+	
 	<br>
 	<%end%>
+	

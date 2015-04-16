@@ -1,13 +1,10 @@
 <h2>add new article</h2>
 
+
 <%= form_for @article do|f|%>
 	<br>
-	course name<%=f.text_field :title %>
+	add todo<%=f.text_field :title %>
 	<br>
-course teacher<%=f.text_area :content%>
-	<br>
-	course time <%=f.text_field :coursetime%>
-	<br>
-
+	
 	<%=f.submit%>
 	<%end%>
